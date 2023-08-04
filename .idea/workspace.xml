@@ -5,9 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d92614a0-e812-4567-8369-ecf6e925b67f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/years/data1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/years/aud.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/years/cad.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/years/gbp.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/years/usd.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/graphing/LineCharts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphing/LineCharts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/years/data.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/years/data1.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,9 +29,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2TVLuPXYrVM5G68sfTiYF2NpunH" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -39,8 +44,10 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
+    "database.data.extractors.current.export.id": "Comma-separated (CSV)_id",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/tmas4/IdeaProjects/Graphing_JavaFX/src/main/resources/years",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -52,6 +59,9 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\tmas4\IdeaProjects\Graphing_JavaFX\src\main\resources\years" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\tmas4\IdeaProjects\Graphing_JavaFX\src\main\resources\years" />
       <recent name="C:\Users\tmas4\IdeaProjects\Graphing_JavaFX\src\main\resources" />
@@ -70,7 +80,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1691123528226</updated>
-      <workItem from="1691123529269" duration="8726000" />
+      <workItem from="1691123529269" duration="12798000" />
+      <workItem from="1691178935547" duration="6742000" />
     </task>
     <servers />
   </component>

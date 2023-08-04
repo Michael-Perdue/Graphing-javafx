@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d92614a0-e812-4567-8369-ecf6e925b67f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/graphing/LineCharts.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/graphing/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphing/Main.java" afterDir="false" />
     </list>
@@ -53,9 +52,9 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\tmas4\IdeaProjects\Graphing_JavaFX\src\main\resources\years" />
       <recent name="C:\Users\tmas4\IdeaProjects\Graphing_JavaFX\src\main\resources" />
       <recent name="C:\Users\tmas4\IdeaProjects\Graphing_JavaFX\src\main\data" />
-      <recent name="C:\Users\tmas4\IdeaProjects\Graphing_JavaFX\src\main\resources\years" />
       <recent name="C:\Users\tmas4\IdeaProjects\Graphing_JavaFX\src\main\resources\graphing\graphing_javafx\years" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -70,7 +69,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1691123528226</updated>
-      <workItem from="1691123529269" duration="5985000" />
+      <workItem from="1691123529269" duration="7396000" />
     </task>
     <servers />
   </component>

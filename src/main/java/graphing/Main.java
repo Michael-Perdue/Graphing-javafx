@@ -9,6 +9,7 @@ import javafx.scene.chart.XYChart;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main extends Application {
@@ -22,9 +23,15 @@ public class Main extends Application {
         Scanner scanner = new Scanner(file);
         XYChart.Series data = new XYChart.Series();
         data.setName(file.getName());
+        boolean unpopulated = true;
         while (scanner.hasNextLine()){
             String[] line = scanner.nextLine().split(" ");
             int[] numbers = {Integer.parseInt(line[0]),Integer.parseInt(line[1])};
+            if(unpopulated) {
+                Arrays.fill(xMaxMin, numbers[0]);
+                Arrays.fill(yMaxMin, numbers[1]);
+                unpopulated = false;
+            }
             xMaxMin[0] = Math.min(numbers[0], xMaxMin[0]);
             xMaxMin[1] = Math.max(numbers[0], xMaxMin[1]);
             yMaxMin[0] = Math.min(numbers[1], yMaxMin[0]);
@@ -35,11 +42,11 @@ public class Main extends Application {
         }
         NumberAxis xAxis = new NumberAxis(xMaxMin[0],xMaxMin[1],1);
         NumberAxis yAxis = new NumberAxis(yMaxMin[0],yMaxMin[1],1);
-        xAxis.setLabel("src/main/data/years");
-        yAxis.setLabel("values");
+        xAxis.setLabel("x");
+        yAxis.setLabel("y");
         LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
         lineChart.getData().add(data);
-        lineChart.setTitle(file.getName());
+        lineChart.setTitle("Line chart");
 
         // display the line chart
         Scene scene = new Scene(lineChart, 640, 480);

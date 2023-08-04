@@ -22,19 +22,16 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
 
         Button button = new Button("Generate linecharts");
-        StackPane tilePane = new StackPane();
+        StackPane stackPane = new StackPane();
         EventHandler<ActionEvent> event = e -> {
             try {
-                LineChart<Number, Number> lineChart = LineCharts.loadchart();
-                Scene scene = new Scene(lineChart, 640, 480);
-                Stage linechartStage = new Stage();
-                linechartStage.setScene(scene);
-                linechartStage.show();
+                Stage lineChartConfig = LineCharts.LineChartConfig();
+                lineChartConfig.show();
             }catch (Exception ex){ex.printStackTrace();}
         };
         button.setOnAction(event);
-        tilePane.getChildren().add(button);
-        Scene scene = new Scene(tilePane, 200, 200);
+        stackPane.getChildren().add(button);
+        Scene scene = new Scene(stackPane, 200, 200);
         stage.setScene(scene);
         stage.show();
 

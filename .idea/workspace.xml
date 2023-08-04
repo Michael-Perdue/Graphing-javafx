@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d92614a0-e812-4567-8369-ecf6e925b67f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/years/aud.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/years/cad.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/years/gbp.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/years/usd.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/graphing/LineCharts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphing/LineCharts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/years/data.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/years/data1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/graphing/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphing/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +76,7 @@
       <option name="presentableId" value="Default" />
       <updated>1691123528226</updated>
       <workItem from="1691123529269" duration="12798000" />
-      <workItem from="1691178935547" duration="6742000" />
+      <workItem from="1691178935547" duration="10685000" />
     </task>
     <servers />
   </component>

@@ -6,26 +6,18 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
-import javafx.scene.chart.LineChart;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Scanner;
 
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-
         Button button = new Button("Generate linecharts");
         StackPane stackPane = new StackPane();
         EventHandler<ActionEvent> event = e -> {
             try {
-                Stage lineChartConfig = LineCharts.LineChartConfig();
+                Stage lineChartConfig = LineChartGen.getInstance().LineChartConfig();
                 lineChartConfig.show();
             }catch (Exception ex){ex.printStackTrace();}
         };

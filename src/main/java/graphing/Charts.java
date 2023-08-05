@@ -5,8 +5,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.chart.LineChart;
-import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -24,13 +23,16 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Charts {
-    protected static double[] xMaxMin = new double[2];
-    protected static double[] yMaxMin = new double[2];
-    private static boolean unpopulated = true;
+    protected double[] xMaxMin = new double[2];
+    protected double[] yMaxMin = new double[2];
+    private boolean unpopulated = true;
 
-    protected static ArrayList<File> filesSelected = new ArrayList<File>();
+    protected TextField xtextField;
+    protected TextField ytextField;
+    protected ArrayList<File> filesSelected = new ArrayList<File>();
 
-    protected static ArrayList<XYChart.Series> generateXYseries() throws FileNotFoundException {
+
+    protected ArrayList<XYChart.Series> generateXYseries() throws FileNotFoundException {
         ArrayList<XYChart.Series> series = new ArrayList<>();
         try {
             for(File file : filesSelected) {
@@ -61,5 +63,54 @@ public class Charts {
             }
         }catch (Exception e){System.out.println("Error no files to process");throw e;}
         return series;
+    }
+
+    protected HBox chartConfig(EventHandler<ActionEvent> event,String name){
+        File[] files = new File("src/main/resources/years").listFiles();
+
+        VBox vBox = new VBox(files.length +3);
+        vBox.setPadding(new Insets(5,5,5,5));
+        vBox.setAlignment(Pos.CENTER_LEFT);
+        vBox.setSpacing(10);
+
+        Label label = new Label("Select which files you want to use");
+        vBox.getChildren().add(label);
+
+        for(File file : files) {
+            CheckBox checkBox = new CheckBox(file.getName());
+            vBox.getChildren().add(checkBox);
+            checkBox.setIndeterminate(true);
+            EventHandler<ActionEvent> event1 = e -> {
+                try {
+                    if(checkBox.isSelected())
+                        filesSelected.add(file);
+                    else
+                        filesSelected.remove(file);
+                }catch (Exception ex){ex.printStackTrace();}
+            };
+            checkBox.setOnAction(event1);
+        }
+
+        TilePane xaxisPane = new TilePane();
+        TilePane yaxisPane = new TilePane();
+        Label xaxisLabel = new Label("X axis name");
+        Label yaxisLabel = new Label("Y axis name");
+        xtextField = new TextField("x");
+        ytextField = new TextField("y");
+        xaxisPane.getChildren().add(xtextField);
+        xaxisPane.getChildren().add(xaxisLabel);
+        yaxisPane.getChildren().add(ytextField);
+        yaxisPane.getChildren().add(yaxisLabel);
+        vBox.getChildren().add(xaxisPane);
+        vBox.getChildren().add(yaxisPane);
+
+        Button button = new Button("Generate " + name);
+        button.setOnAction(event);
+        vBox.getChildren().add(button);
+
+        HBox hBox = new HBox(vBox);
+        hBox.setAlignment(Pos.CENTER);
+
+        return hBox;
     }
 }

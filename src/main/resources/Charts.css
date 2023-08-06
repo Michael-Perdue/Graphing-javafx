@@ -1,0 +1,6 @@
+.default-color0.chart-symbol {
+    -fx-background-radius: 30px;
+}
+.onHover{
+    -fx-background-color: BLACK;
+}

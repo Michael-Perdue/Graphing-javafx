@@ -17,7 +17,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
-        VBox vBox = new VBox(2);
+        VBox vBox = new VBox(3);
         vBox.setAlignment(Pos.CENTER_LEFT);
 
         EventHandler<ActionEvent> lineEvent = e -> {
@@ -32,13 +32,21 @@ public class Main extends Application {
                 barChartConfig.show();
             }catch (Exception ex){ex.printStackTrace();}
         };
-
+        EventHandler<ActionEvent> scatterEvent = e -> {
+            try {
+                Stage scatterChartConfig = ScatterChartGen.getInstance().scatterChartConfig();
+                scatterChartConfig.show();
+            }catch (Exception ex){ex.printStackTrace();}
+        };
         Button lineButton = new Button("Generate linecharts");
         lineButton.setOnAction(lineEvent);
         vBox.getChildren().add(lineButton);
         Button barButton = new Button("Generate barcharts");
         barButton.setOnAction(barEvent);
         vBox.getChildren().add(barButton);
+        Button scatterButton = new Button("Generate scattercharts");
+        scatterButton.setOnAction(scatterEvent);
+        vBox.getChildren().add(scatterButton);
 
         HBox hBox = new HBox();
         hBox.getChildren().add(vBox);

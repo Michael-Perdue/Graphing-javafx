@@ -33,8 +33,8 @@ public class BarChartGen extends Charts{
         super();
     }
 
-    protected ArrayList<XYChart.Series> generateXYseries() throws FileNotFoundException {
-        ArrayList<XYChart.Series> series = new ArrayList<>();
+    protected ArrayList<XYChart.Series<Number,Number>> generateXYseries() throws FileNotFoundException {
+        ArrayList<XYChart.Series<Number,Number>> series = new ArrayList<>();
         try {
             for(File file : filesSelected) {
                 if (file.getName().contains(".csv")) {
@@ -55,7 +55,7 @@ public class BarChartGen extends Charts{
     }
 
     private BarChart<String, Number> loadchart() throws FileNotFoundException {
-        ArrayList<XYChart.Series> series = generateXYseries();
+        ArrayList<XYChart.Series<Number,Number>> series = generateXYseries();
         CategoryAxis xAxis = new CategoryAxis();
         NumberAxis yAxis = new NumberAxis();
         xAxis.setLabel(xtextField.getText());
@@ -63,7 +63,8 @@ public class BarChartGen extends Charts{
         BarChart<String, Number> barChart = new BarChart<>(xAxis, yAxis);
         for(XYChart.Series data : series)
             barChart.getData().add(data);
-        barChart.setTitle("Line chart");
+        barChart.setTitle("Bar chart");
+        addTooltip(series,true);
         return barChart;
     }
 
@@ -74,6 +75,7 @@ public class BarChartGen extends Charts{
             try {
                 BarChart<String, Number> barChart = loadchart();
                 Scene scene = new Scene(barChart, 1000, 480);
+                scene.getStylesheets().add(Main.class.getResource("/Charts.css").toExternalForm());
                 Stage barchartStage = new Stage();
                 barchartStage.setScene(scene);
                 barchartStage.show();

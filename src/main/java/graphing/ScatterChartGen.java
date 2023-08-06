@@ -2,6 +2,7 @@ package graphing;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.chart.*;
 import javafx.scene.layout.HBox;
@@ -35,7 +36,8 @@ public class ScatterChartGen extends Charts{
         xAxis.setLabel(xtextField.getText());
         yAxis.setLabel(ytextField.getText());
         ScatterChart<Number, Number> scatterChart = new ScatterChart<>(xAxis, yAxis);
-        scatterChart.autosize();
+        scatterChart.setPrefHeight(3000);
+        scatterChart.setPrefWidth(3000);
         for(XYChart.Series data : series)
             scatterChart.getData().add(data);
         scatterChart.setTitle("Scatter chart");
@@ -44,22 +46,27 @@ public class ScatterChartGen extends Charts{
     }
 
     public Stage scatterChartConfig(){
-        File[] files = new File("src/main/resources/years").listFiles();
 
         EventHandler<ActionEvent> event = e -> {
             try {
                 ScatterChart<Number, Number> scatterChart = loadchart();
-                Scene scene = new Scene(scatterChart, 640, 480);
-                scene.getStylesheets().add(Main.class.getResource("/Charts.css").toExternalForm());
-                Stage scatterchartStage = new Stage();
-                scatterchartStage.setScene(scene);
-                scatterchartStage.show();
+                vBoxGraph.getChildren().clear();
+                vBoxGraph.getChildren().add(scatterChart);
             }catch (Exception ex){ex.printStackTrace();}
         };
 
-        HBox hBox = chartConfig(event,"barchart");
 
-        Scene scene = new Scene(hBox,400, (files.length*50)+100);
+        ScatterChart scatterChart = new ScatterChart<>(new NumberAxis(),new NumberAxis());
+        hBox = chartConfig(event,"Scatterchart");
+        vBoxGraph.getChildren().add(scatterChart);
+        vBoxGraph.prefWidth(1000);
+        vBoxGraph.prefHeight(1000);
+        hBox.getChildren().add(vBoxGraph);
+        vBoxGraph.setAlignment(Pos.CENTER);
+        scatterChart.setPrefHeight(1000);
+        scatterChart.setPrefWidth(1000);
+        Scene scene = new Scene(hBox,1200,640);
+        scene.getStylesheets().add(Main.class.getResource("/Charts.css").toExternalForm());
         Stage stage = new Stage();
         stage.setScene(scene);
         return stage;

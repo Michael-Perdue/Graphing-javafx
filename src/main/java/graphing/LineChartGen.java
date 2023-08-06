@@ -2,11 +2,13 @@ package graphing;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -34,10 +36,11 @@ public class LineChartGen extends Charts{
         NumberAxis yAxis = new NumberAxis();
         yAxis.setAutoRanging(true);
         yAxis.setForceZeroInRange(false);
+        LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
         xAxis.setLabel(xtextField.getText());
         yAxis.setLabel(ytextField.getText());
-        LineChart<Number, Number> lineChart = new LineChart<>(xAxis, yAxis);
-        lineChart.autosize();
+        lineChart.setPrefHeight(3000);
+        lineChart.setPrefWidth(3000);
         lineChart.getData().addAll(series);
         lineChart.setTitle("Line chart");
         addTooltip(series,true);
@@ -45,21 +48,25 @@ public class LineChartGen extends Charts{
     }
 
     public Stage LineChartConfig(){
-        File[] files = new File("src/main/resources/years").listFiles();
 
         EventHandler<ActionEvent> event = e -> {
             try {
                 LineChart<Number, Number> lineChart = loadchart();
-                Scene scene = new Scene(lineChart, 640, 480);
-                scene.getStylesheets().add(Main.class.getResource("/Charts.css").toExternalForm());
-                Stage linechartStage = new Stage();
-                linechartStage.setScene(scene);
-                linechartStage.show();
+                vBoxGraph.getChildren().clear();
+                vBoxGraph.getChildren().add(lineChart);
             }catch (Exception ex){ex.printStackTrace();}
         };
-
-        HBox hBox = chartConfig(event,"linechart");
-        Scene scene = new Scene(hBox,400, (files.length*50)+100);
+        LineChart lineChart = new LineChart<>(new NumberAxis(),new NumberAxis());
+        hBox = chartConfig(event,"linechart");
+        vBoxGraph.getChildren().add(lineChart);
+        vBoxGraph.prefWidth(1000);
+        vBoxGraph.prefHeight(1000);
+        hBox.getChildren().add(vBoxGraph);
+        vBoxGraph.setAlignment(Pos.CENTER);
+        lineChart.setPrefHeight(1000);
+        lineChart.setPrefWidth(1000);
+        Scene scene = new Scene(hBox,1200,640);
+        scene.getStylesheets().add(Main.class.getResource("/Charts.css").toExternalForm());
         Stage stage = new Stage();
         stage.setScene(scene);
         return stage;

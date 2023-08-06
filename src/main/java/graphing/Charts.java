@@ -21,6 +21,8 @@ import java.util.Scanner;
 public class Charts {
     protected double[] xMaxMin = new double[2];
     private boolean unpopulated = true;
+    protected HBox hBox = new HBox();
+    protected VBox vBoxGraph = new VBox(1);
 
     protected TextField xtextField;
     protected TextField ytextField;
@@ -73,14 +75,14 @@ public class Charts {
     }
 
     protected HBox chartConfig(EventHandler<ActionEvent> event,String name){
-        File[] files = new File("src/main/resources/years").listFiles();
+        File[] files = new File("src/main/resources/data").listFiles();
 
         VBox vBox = new VBox(files.length +3);
         vBox.setPadding(new Insets(5,5,5,5));
         vBox.setAlignment(Pos.CENTER_LEFT);
         vBox.setSpacing(10);
-
-        Label label = new Label("Select which files you want to use");
+        vBox.setPrefWidth(200);
+        Label label = new Label("Select files to load");
         vBox.getChildren().add(label);
 
         for(File file : files) {
@@ -116,7 +118,7 @@ public class Charts {
         vBox.getChildren().add(button);
 
         HBox hBox = new HBox(vBox);
-        hBox.setAlignment(Pos.CENTER);
+        hBox.setAlignment(Pos.TOP_LEFT);
 
         return hBox;
     }

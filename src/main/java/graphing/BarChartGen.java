@@ -2,6 +2,7 @@ package graphing;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.chart.*;
 import javafx.scene.layout.HBox;
@@ -55,27 +56,33 @@ public class BarChartGen extends Charts{
         for(XYChart.Series data : series)
             barChart.getData().add(data);
         barChart.setTitle("Bar chart");
+        barChart.setPrefWidth(3000);
+        barChart.setPrefHeight(3000);
         addTooltip(series,true);
         return barChart;
     }
 
     public Stage barChartConfig(){
-        File[] files = new File("src/main/resources/years").listFiles();
 
         EventHandler<ActionEvent> event = e -> {
             try {
                 BarChart<String, Number> barChart = loadchart();
-                Scene scene = new Scene(barChart, 1000, 480);
-                scene.getStylesheets().add(Main.class.getResource("/Charts.css").toExternalForm());
-                Stage barchartStage = new Stage();
-                barchartStage.setScene(scene);
-                barchartStage.show();
+                vBoxGraph.getChildren().clear();
+                vBoxGraph.getChildren().add(barChart);
             }catch (Exception ex){ex.printStackTrace();}
         };
 
-        HBox hBox = chartConfig(event,"barchart");
-
-        Scene scene = new Scene(hBox,400, (files.length*50)+100);
+        BarChart barChart = new BarChart<>(new CategoryAxis(),new NumberAxis());
+        hBox = chartConfig(event,"barchart");
+        vBoxGraph.getChildren().add(barChart);
+        vBoxGraph.prefWidth(1000);
+        vBoxGraph.prefHeight(1000);
+        hBox.getChildren().add(vBoxGraph);
+        vBoxGraph.setAlignment(Pos.CENTER);
+        barChart.setPrefHeight(1000);
+        barChart.setPrefWidth(1000);
+        Scene scene = new Scene(hBox,1200,640);
+        scene.getStylesheets().add(Main.class.getResource("/Charts.css").toExternalForm());
         Stage stage = new Stage();
         stage.setScene(scene);
         return stage;

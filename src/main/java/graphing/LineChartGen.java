@@ -18,6 +18,7 @@ import java.util.ArrayList;
 public class LineChartGen extends Charts{
 
     private static LineChartGen lineChartGen;
+    private LineChart lineChart;
 
     public static LineChartGen getInstance(){
         if(lineChartGen == null)
@@ -47,24 +48,31 @@ public class LineChartGen extends Charts{
         return lineChart;
     }
 
-    public Stage LineChartConfig(){
+    protected void updateChart(){
+        try{
+        lineChart = loadchart();
+        vBoxGraph.getChildren().clear();
+        vBoxGraph.getChildren().add(lineChart);
+        }catch (Exception ex){ex.printStackTrace();}
+    }
 
-        EventHandler<ActionEvent> event = e -> {
-            try {
-                LineChart<Number, Number> lineChart = loadchart();
-                vBoxGraph.getChildren().clear();
-                vBoxGraph.getChildren().add(lineChart);
-            }catch (Exception ex){ex.printStackTrace();}
-        };
-        LineChart lineChart = new LineChart<>(new NumberAxis(),new NumberAxis());
-        hBox = chartConfig(event,"linechart");
+    public Stage chartConfig(){
+
+        lineChart = new LineChart<>(new NumberAxis(),new NumberAxis());
+        hBox = chartConfig("linechart");
+
         vBoxGraph.getChildren().add(lineChart);
         vBoxGraph.prefWidth(1000);
         vBoxGraph.prefHeight(1000);
-        hBox.getChildren().add(vBoxGraph);
         vBoxGraph.setAlignment(Pos.CENTER);
+        hBox.getChildren().add(vBoxGraph);
+
         lineChart.setPrefHeight(1000);
         lineChart.setPrefWidth(1000);
+
+        xtextField.setOnKeyPressed(keyEvent -> lineChart.getXAxis().setLabel(xtextField.getText()));
+        ytextField.setOnKeyPressed(keyEvent -> lineChart.getYAxis().setLabel(ytextField.getText()));
+
         Scene scene = new Scene(hBox,1200,640);
         scene.getStylesheets().add(Main.class.getResource("/Charts.css").toExternalForm());
         Stage stage = new Stage();

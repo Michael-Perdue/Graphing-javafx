@@ -22,19 +22,19 @@ public class Main extends Application {
 
         EventHandler<ActionEvent> lineEvent = e -> {
             try {
-                Stage lineChartConfig = LineChartGen.getInstance().LineChartConfig();
+                Stage lineChartConfig = LineChartGen.getInstance().chartConfig();
                 lineChartConfig.show();
             }catch (Exception ex){ex.printStackTrace();}
         };
         EventHandler<ActionEvent> barEvent = e -> {
             try {
-                Stage barChartConfig = BarChartGen.getInstance().barChartConfig();
+                Stage barChartConfig = BarChartGen.getInstance().chartConfig();
                 barChartConfig.show();
             }catch (Exception ex){ex.printStackTrace();}
         };
         EventHandler<ActionEvent> scatterEvent = e -> {
             try {
-                Stage scatterChartConfig = ScatterChartGen.getInstance().scatterChartConfig();
+                Stage scatterChartConfig = ScatterChartGen.getInstance().chartConfig();
                 scatterChartConfig.show();
             }catch (Exception ex){ex.printStackTrace();}
         };

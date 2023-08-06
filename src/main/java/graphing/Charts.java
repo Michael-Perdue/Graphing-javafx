@@ -10,6 +10,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.File;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Charts {
+public abstract class Charts {
     protected double[] xMaxMin = new double[2];
     private boolean unpopulated = true;
     protected HBox hBox = new HBox();
@@ -74,10 +75,13 @@ public class Charts {
         return series;
     }
 
-    protected HBox chartConfig(EventHandler<ActionEvent> event,String name){
+    public abstract Stage chartConfig();
+    protected abstract void updateChart();
+
+    protected HBox chartConfig(String name){
         File[] files = new File("src/main/resources/data").listFiles();
 
-        VBox vBox = new VBox(files.length +3);
+        VBox vBox = new VBox(files.length +2);
         vBox.setPadding(new Insets(5,5,5,5));
         vBox.setAlignment(Pos.CENTER_LEFT);
         vBox.setSpacing(10);
@@ -91,10 +95,14 @@ public class Charts {
             checkBox.setIndeterminate(true);
             EventHandler<ActionEvent> event1 = e -> {
                 try {
-                    if(checkBox.isSelected())
+                    if(checkBox.isSelected()) {
                         filesSelected.add(file);
-                    else
+                        updateChart();
+                    }
+                    else {
                         filesSelected.remove(file);
+                        updateChart();
+                    }
                 }catch (Exception ex){ex.printStackTrace();}
             };
             checkBox.setOnAction(event1);
@@ -112,10 +120,6 @@ public class Charts {
         yaxisPane.getChildren().add(yaxisLabel);
         vBox.getChildren().add(xaxisPane);
         vBox.getChildren().add(yaxisPane);
-
-        Button button = new Button("Generate " + name);
-        button.setOnAction(event);
-        vBox.getChildren().add(button);
 
         HBox hBox = new HBox(vBox);
         hBox.setAlignment(Pos.TOP_LEFT);

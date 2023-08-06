@@ -9,11 +9,8 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/graphing/BarChartGen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphing/BarChartGen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/graphing/Charts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphing/Charts.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/graphing/LineChartGen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphing/LineChartGen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/graphing/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphing/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/graphing/ScatterChartGen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphing/ScatterChartGen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/years/aud.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/aud.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/years/cad.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/cad.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/years/gbp.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/gbp.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/years/usd.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/usd.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +82,7 @@
       <updated>1691123528226</updated>
       <workItem from="1691123529269" duration="12798000" />
       <workItem from="1691178935547" duration="24125000" />
-      <workItem from="1691280405349" duration="14895000" />
+      <workItem from="1691280405349" duration="17081000" />
     </task>
     <servers />
   </component>

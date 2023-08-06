@@ -15,6 +15,8 @@ import java.util.Scanner;
 
 public class BarChartGen extends Charts{
     private static BarChartGen barChartGen;
+    private BarChart barChart;
+
     public static BarChartGen getInstance(){
         if(barChartGen == null)
             barChartGen = new BarChartGen();
@@ -52,9 +54,8 @@ public class BarChartGen extends Charts{
         NumberAxis yAxis = new NumberAxis();
         xAxis.setLabel(xtextField.getText());
         yAxis.setLabel(ytextField.getText());
-        BarChart<String, Number> barChart = new BarChart<>(xAxis, yAxis);
-        for(XYChart.Series data : series)
-            barChart.getData().add(data);
+        BarChart barChart = new BarChart<>(xAxis, yAxis);
+        barChart.getData().addAll(series);
         barChart.setTitle("Bar chart");
         barChart.setPrefWidth(3000);
         barChart.setPrefHeight(3000);
@@ -62,25 +63,33 @@ public class BarChartGen extends Charts{
         return barChart;
     }
 
-    public Stage barChartConfig(){
+    protected void updateChart(){
+        try{
+            barChart = loadchart();
+            vBoxGraph.getChildren().clear();
+            vBoxGraph.getChildren().add(barChart);
+        }catch (Exception ex){ex.printStackTrace();}
+    }
 
-        EventHandler<ActionEvent> event = e -> {
-            try {
-                BarChart<String, Number> barChart = loadchart();
-                vBoxGraph.getChildren().clear();
-                vBoxGraph.getChildren().add(barChart);
-            }catch (Exception ex){ex.printStackTrace();}
-        };
+    public Stage chartConfig(){
 
-        BarChart barChart = new BarChart<>(new CategoryAxis(),new NumberAxis());
-        hBox = chartConfig(event,"barchart");
+        barChart = new BarChart<>(new CategoryAxis(),new NumberAxis());
+        hBox = chartConfig("barchart");
+
         vBoxGraph.getChildren().add(barChart);
         vBoxGraph.prefWidth(1000);
         vBoxGraph.prefHeight(1000);
-        hBox.getChildren().add(vBoxGraph);
         vBoxGraph.setAlignment(Pos.CENTER);
+
+        hBox.getChildren().add(vBoxGraph);
+
+
         barChart.setPrefHeight(1000);
         barChart.setPrefWidth(1000);
+
+        xtextField.setOnKeyPressed(keyEvent -> barChart.getXAxis().setLabel(xtextField.getText()));
+        ytextField.setOnKeyPressed(keyEvent -> barChart.getYAxis().setLabel(ytextField.getText()));
+
         Scene scene = new Scene(hBox,1200,640);
         scene.getStylesheets().add(Main.class.getResource("/Charts.css").toExternalForm());
         Stage stage = new Stage();

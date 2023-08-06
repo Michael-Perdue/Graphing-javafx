@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class ScatterChartGen extends Charts{
 
     private static ScatterChartGen scatterChartGen;
+    private ScatterChart scatterChart;
 
     public static ScatterChartGen getInstance(){
         if(scatterChartGen == null)
@@ -35,36 +36,41 @@ public class ScatterChartGen extends Charts{
         yAxis.setForceZeroInRange(false);
         xAxis.setLabel(xtextField.getText());
         yAxis.setLabel(ytextField.getText());
-        ScatterChart<Number, Number> scatterChart = new ScatterChart<>(xAxis, yAxis);
+        ScatterChart scatterChart = new ScatterChart<>(xAxis, yAxis);
         scatterChart.setPrefHeight(3000);
         scatterChart.setPrefWidth(3000);
-        for(XYChart.Series data : series)
-            scatterChart.getData().add(data);
+        scatterChart.getData().addAll(series);
         scatterChart.setTitle("Scatter chart");
         addTooltip(series,false);
         return scatterChart;
     }
 
-    public Stage scatterChartConfig(){
+    protected void updateChart(){
+        try {
+            scatterChart = loadchart();
+            vBoxGraph.getChildren().clear();
+            vBoxGraph.getChildren().add(scatterChart);
+        }catch (Exception ex){ex.printStackTrace();}
+    }
 
-        EventHandler<ActionEvent> event = e -> {
-            try {
-                ScatterChart<Number, Number> scatterChart = loadchart();
-                vBoxGraph.getChildren().clear();
-                vBoxGraph.getChildren().add(scatterChart);
-            }catch (Exception ex){ex.printStackTrace();}
-        };
+    public Stage chartConfig(){
 
+        scatterChart = new ScatterChart<>(new NumberAxis(),new NumberAxis());
+        hBox = chartConfig("Scatterchart");
 
-        ScatterChart scatterChart = new ScatterChart<>(new NumberAxis(),new NumberAxis());
-        hBox = chartConfig(event,"Scatterchart");
         vBoxGraph.getChildren().add(scatterChart);
         vBoxGraph.prefWidth(1000);
         vBoxGraph.prefHeight(1000);
-        hBox.getChildren().add(vBoxGraph);
         vBoxGraph.setAlignment(Pos.CENTER);
+
+        hBox.getChildren().add(vBoxGraph);
+
         scatterChart.setPrefHeight(1000);
         scatterChart.setPrefWidth(1000);
+
+        xtextField.setOnKeyPressed(keyEvent -> scatterChart.getXAxis().setLabel(xtextField.getText()));
+        ytextField.setOnKeyPressed(keyEvent -> scatterChart.getYAxis().setLabel(ytextField.getText()));
+
         Scene scene = new Scene(hBox,1200,640);
         scene.getStylesheets().add(Main.class.getResource("/Charts.css").toExternalForm());
         Stage stage = new Stage();

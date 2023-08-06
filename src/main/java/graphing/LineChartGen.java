@@ -1,5 +1,6 @@
 package graphing;
 
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -7,9 +8,11 @@ import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javax.imageio.ImageIO;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -54,6 +57,14 @@ public class LineChartGen extends Charts{
         vBoxGraph.getChildren().clear();
         vBoxGraph.getChildren().add(lineChart);
         }catch (Exception ex){ex.printStackTrace();}
+    }
+
+    protected void savePNG(){
+        WritableImage image = lineChart.snapshot(null,null);
+        File imageFile = new File(System.getProperty("user.home") +"/Downloads/" + lineChart.getTitle() + ".png");
+        try{
+           ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", imageFile);
+        }catch (Exception e){e.printStackTrace();}
     }
 
     public Stage chartConfig(){

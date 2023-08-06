@@ -1,13 +1,16 @@
 package graphing;
 
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.chart.*;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
+import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -69,6 +72,14 @@ public class BarChartGen extends Charts{
             vBoxGraph.getChildren().clear();
             vBoxGraph.getChildren().add(barChart);
         }catch (Exception ex){ex.printStackTrace();}
+    }
+
+    protected void savePNG(){
+        WritableImage image = barChart.snapshot(null,null);
+        File imageFile = new File(System.getProperty("user.home") +"/Downloads/" + barChart.getTitle() + ".png");
+        try{
+            ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", imageFile);
+        }catch (Exception e){e.printStackTrace();}
     }
 
     public Stage chartConfig(){

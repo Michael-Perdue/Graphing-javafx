@@ -78,10 +78,12 @@ public abstract class Charts {
     public abstract Stage chartConfig();
     protected abstract void updateChart();
 
+    protected abstract void savePNG();
+
     protected HBox chartConfig(String name){
         File[] files = new File("src/main/resources/data").listFiles();
 
-        VBox vBox = new VBox(files.length +2);
+        VBox vBox = new VBox(files.length +3);
         vBox.setPadding(new Insets(5,5,5,5));
         vBox.setAlignment(Pos.CENTER_LEFT);
         vBox.setSpacing(10);
@@ -120,6 +122,10 @@ public abstract class Charts {
         yaxisPane.getChildren().add(yaxisLabel);
         vBox.getChildren().add(xaxisPane);
         vBox.getChildren().add(yaxisPane);
+
+        Button button = new Button("Save graph as PNG");
+        button.setOnAction(actionEvent -> savePNG() );
+        vBox.getChildren().add(button);
 
         HBox hBox = new HBox(vBox);
         hBox.setAlignment(Pos.TOP_LEFT);

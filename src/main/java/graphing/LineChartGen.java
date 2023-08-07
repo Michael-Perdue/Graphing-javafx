@@ -21,7 +21,6 @@ import java.util.ArrayList;
 public class LineChartGen extends Charts{
 
     private static LineChartGen lineChartGen;
-    private LineChart lineChart;
 
     public static LineChartGen getInstance(){
         if(lineChartGen == null)
@@ -46,48 +45,27 @@ public class LineChartGen extends Charts{
         lineChart.setPrefHeight(3000);
         lineChart.setPrefWidth(3000);
         lineChart.getData().addAll(series);
-        lineChart.setTitle("Line chart");
+        lineChart.setTitle(titletextField.getText());
         addTooltip(series,true);
         return lineChart;
     }
 
     protected void updateChart(){
         try{
-        lineChart = loadchart();
+        chart = loadchart();
+        chart.getXAxis().setAnimated(false);
+        chart.getYAxis().setAnimated(false);
         vBoxGraph.getChildren().clear();
-        vBoxGraph.getChildren().add(lineChart);
+        vBoxGraph.getChildren().add(chart);
         }catch (Exception ex){ex.printStackTrace();}
     }
 
     protected void savePNG(){
-        WritableImage image = lineChart.snapshot(null,null);
-        File imageFile = new File(System.getProperty("user.home") +"/Downloads/" + lineChart.getTitle() + ".png");
+        WritableImage image = chart.snapshot(null,null);
+        File imageFile = new File(System.getProperty("user.home") +"/Downloads/" + chart.getTitle() + ".png");
         try{
            ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", imageFile);
         }catch (Exception e){e.printStackTrace();}
     }
 
-    public Stage chartConfig(){
-
-        lineChart = new LineChart<>(new NumberAxis(),new NumberAxis());
-        hBox = chartConfig("linechart");
-
-        vBoxGraph.getChildren().add(lineChart);
-        vBoxGraph.prefWidth(1000);
-        vBoxGraph.prefHeight(1000);
-        vBoxGraph.setAlignment(Pos.CENTER);
-        hBox.getChildren().add(vBoxGraph);
-
-        lineChart.setPrefHeight(1000);
-        lineChart.setPrefWidth(1000);
-
-        xtextField.setOnKeyPressed(keyEvent -> lineChart.getXAxis().setLabel(xtextField.getText()));
-        ytextField.setOnKeyPressed(keyEvent -> lineChart.getYAxis().setLabel(ytextField.getText()));
-
-        Scene scene = new Scene(hBox,1200,640);
-        scene.getStylesheets().add(Main.class.getResource("/Charts.css").toExternalForm());
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        return stage;
-    }
 }

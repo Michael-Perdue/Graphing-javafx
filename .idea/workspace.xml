@@ -5,13 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d92614a0-e812-4567-8369-ecf6e925b67f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/graphing/BarChartGen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphing/BarChartGen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/graphing/Charts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphing/Charts.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/graphing/LineChartGen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphing/LineChartGen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/graphing/ScatterChartGen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphing/ScatterChartGen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,6 +84,7 @@
       <workItem from="1691178935547" duration="24125000" />
       <workItem from="1691280405349" duration="18909000" />
       <workItem from="1691301996665" duration="3043000" />
+      <workItem from="1691379141916" duration="3366000" />
     </task>
     <servers />
   </component>

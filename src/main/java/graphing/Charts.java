@@ -4,6 +4,9 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
@@ -22,12 +25,14 @@ import java.util.Scanner;
 public abstract class Charts {
     protected double[] xMaxMin = new double[2];
     private boolean unpopulated = true;
-    protected HBox hBox = new HBox();
     protected VBox vBoxGraph = new VBox(1);
 
     protected TextField xtextField;
     protected TextField ytextField;
+    protected TextField titletextField;
     protected ArrayList<File> filesSelected = new ArrayList<File>();
+
+    protected XYChart chart;
 
     protected void addTooltip(ArrayList<XYChart.Series<Number,Number>> series,boolean resize){
         for(XYChart.Series<Number,Number> dataSeries: series) {
@@ -75,15 +80,16 @@ public abstract class Charts {
         return series;
     }
 
-    public abstract Stage chartConfig();
     protected abstract void updateChart();
 
     protected abstract void savePNG();
 
-    protected HBox chartConfig(String name){
+    protected Stage chartConfig(){
         File[] files = new File("src/main/resources/data").listFiles();
+        vBoxGraph.getChildren().clear();
+        filesSelected.clear();
 
-        VBox vBox = new VBox(files.length +3);
+        VBox vBox = new VBox(files.length +4);
         vBox.setPadding(new Insets(5,5,5,5));
         vBox.setAlignment(Pos.CENTER_LEFT);
         vBox.setSpacing(10);
@@ -112,16 +118,22 @@ public abstract class Charts {
 
         TilePane xaxisPane = new TilePane();
         TilePane yaxisPane = new TilePane();
+        TilePane titlePane = new TilePane();
         Label xaxisLabel = new Label("X axis name");
         Label yaxisLabel = new Label("Y axis name");
+        Label titleLabel = new Label("Title name");
         xtextField = new TextField("x");
         ytextField = new TextField("y");
+        titletextField = new TextField("Title");
         xaxisPane.getChildren().add(xtextField);
         xaxisPane.getChildren().add(xaxisLabel);
         yaxisPane.getChildren().add(ytextField);
         yaxisPane.getChildren().add(yaxisLabel);
+        titlePane.getChildren().add(titletextField);
+        titlePane.getChildren().add(titleLabel);
         vBox.getChildren().add(xaxisPane);
         vBox.getChildren().add(yaxisPane);
+        vBox.getChildren().add(titlePane);
 
         Button button = new Button("Save graph as PNG");
         button.setOnAction(actionEvent -> savePNG() );
@@ -130,6 +142,29 @@ public abstract class Charts {
         HBox hBox = new HBox(vBox);
         hBox.setAlignment(Pos.TOP_LEFT);
 
-        return hBox;
+        chart = new LineChart<>(new NumberAxis(),new NumberAxis());
+
+        vBoxGraph.getChildren().add(chart);
+        vBoxGraph.prefWidth(1000);
+        vBoxGraph.prefHeight(1000);
+        vBoxGraph.setAlignment(Pos.CENTER);
+        hBox.getChildren().add(vBoxGraph);
+
+        chart.setPrefHeight(1000);
+        chart.setPrefWidth(1000);
+        chart.getXAxis().setLabel(xtextField.getText());
+        chart.getYAxis().setLabel(ytextField.getText());
+        chart.setTitle(titletextField.getText());
+
+        titletextField.setOnKeyReleased(keyEvent -> chart.setTitle(titletextField.getText() ));
+        xtextField.setOnKeyReleased(keyEvent -> chart.getXAxis().setLabel(xtextField.getText()+ " "));
+        ytextField.setOnKeyReleased(keyEvent -> chart.getYAxis().setLabel(ytextField.getText()+ " "));
+
+        Scene scene = new Scene(hBox,1200,640);
+        scene.getStylesheets().add(Main.class.getResource("/Charts.css").toExternalForm());
+        Stage stage = new Stage();
+        stage.setScene(scene);
+
+        return stage;
     }
 }

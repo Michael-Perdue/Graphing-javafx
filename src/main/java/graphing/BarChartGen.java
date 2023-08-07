@@ -18,7 +18,6 @@ import java.util.Scanner;
 
 public class BarChartGen extends Charts{
     private static BarChartGen barChartGen;
-    private BarChart barChart;
 
     public static BarChartGen getInstance(){
         if(barChartGen == null)
@@ -59,7 +58,7 @@ public class BarChartGen extends Charts{
         yAxis.setLabel(ytextField.getText());
         BarChart barChart = new BarChart<>(xAxis, yAxis);
         barChart.getData().addAll(series);
-        barChart.setTitle("Bar chart");
+        barChart.setTitle(titletextField.getText());
         barChart.setPrefWidth(3000);
         barChart.setPrefHeight(3000);
         addTooltip(series,true);
@@ -68,43 +67,18 @@ public class BarChartGen extends Charts{
 
     protected void updateChart(){
         try{
-            barChart = loadchart();
+            chart = loadchart();
             vBoxGraph.getChildren().clear();
-            vBoxGraph.getChildren().add(barChart);
+            vBoxGraph.getChildren().add(chart);
         }catch (Exception ex){ex.printStackTrace();}
     }
 
     protected void savePNG(){
-        WritableImage image = barChart.snapshot(null,null);
-        File imageFile = new File(System.getProperty("user.home") +"/Downloads/" + barChart.getTitle() + ".png");
+        WritableImage image = chart.snapshot(null,null);
+        File imageFile = new File(System.getProperty("user.home") +"/Downloads/" + chart.getTitle() + ".png");
         try{
             ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", imageFile);
         }catch (Exception e){e.printStackTrace();}
     }
 
-    public Stage chartConfig(){
-
-        barChart = new BarChart<>(new CategoryAxis(),new NumberAxis());
-        hBox = chartConfig("barchart");
-
-        vBoxGraph.getChildren().add(barChart);
-        vBoxGraph.prefWidth(1000);
-        vBoxGraph.prefHeight(1000);
-        vBoxGraph.setAlignment(Pos.CENTER);
-
-        hBox.getChildren().add(vBoxGraph);
-
-
-        barChart.setPrefHeight(1000);
-        barChart.setPrefWidth(1000);
-
-        xtextField.setOnKeyPressed(keyEvent -> barChart.getXAxis().setLabel(xtextField.getText()));
-        ytextField.setOnKeyPressed(keyEvent -> barChart.getYAxis().setLabel(ytextField.getText()));
-
-        Scene scene = new Scene(hBox,1200,640);
-        scene.getStylesheets().add(Main.class.getResource("/Charts.css").toExternalForm());
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        return stage;
-    }
 }

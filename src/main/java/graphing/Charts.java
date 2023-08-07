@@ -85,132 +85,87 @@ public abstract class Charts {
 
     protected abstract void savePNG();
 
-    protected void chartConfig(Stage stage){
+    protected HBox chartConfig(Stage stage) {
 
-        if(scene == null) {
-            File[] files = new File("src/main/resources/data").listFiles();
-            vBoxGraph.getChildren().clear();
-            filesSelected.clear();
-            VBox vBoxButtons = new VBox(3);
-            vBoxButtons.setAlignment(Pos.CENTER_LEFT);
-            vBoxButtons.setSpacing(10);
-            vBoxButtons.setMinHeight(150);
-            vBoxButtons.setPrefWidth(200);
-            EventHandler<ActionEvent> lineEvent = e -> {
+        File[] files = new File("src/main/resources/data").listFiles();
+
+        VBox vBox = new VBox(files.length + 5);
+        vBox.setPadding(new Insets(5, 5, 5, 5));
+        vBox.setAlignment(Pos.CENTER_LEFT);
+        vBox.setSpacing(10);
+        vBox.setPrefWidth(200);
+        Label label = new Label("Select files to load");
+        vBox.getChildren().add(label);
+
+        for (File file : files) {
+            CheckBox checkBox = new CheckBox(file.getName());
+            vBox.getChildren().add(checkBox);
+            checkBox.setIndeterminate(true);
+            EventHandler<ActionEvent> event1 = e -> {
                 try {
-                    LineChartGen.getInstance().chartConfig(stage);
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-            };
-            EventHandler<ActionEvent> barEvent = e -> {
-                try {
-                    BarChartGen.getInstance().chartConfig(stage);
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-            };
-            EventHandler<ActionEvent> scatterEvent = e -> {
-                try {
-                    ScatterChartGen.getInstance().chartConfig(stage);
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-            };
-            Button lineButton = new Button("Switch to linecharts");
-            lineButton.setOnAction(lineEvent);
-            vBoxButtons.getChildren().add(lineButton);
-            Button barButton = new Button("Switch to barcharts");
-            barButton.setOnAction(barEvent);
-            vBoxButtons.getChildren().add(barButton);
-            Button scatterButton = new Button("Switch to scattercharts");
-            scatterButton.setOnAction(scatterEvent);
-            vBoxButtons.getChildren().add(scatterButton);
-
-
-            VBox vBox = new VBox(files.length + 4);
-            vBox.setPadding(new Insets(5, 5, 5, 5));
-            vBox.setAlignment(Pos.CENTER_LEFT);
-            vBox.setSpacing(10);
-            vBox.setPrefWidth(200);
-            Label label = new Label("Select files to load");
-            vBox.getChildren().add(label);
-
-            for (File file : files) {
-                CheckBox checkBox = new CheckBox(file.getName());
-                vBox.getChildren().add(checkBox);
-                checkBox.setIndeterminate(true);
-                EventHandler<ActionEvent> event1 = e -> {
-                    try {
-                        if (checkBox.isSelected()) {
-                            filesSelected.add(file);
-                            updateChart();
-                        } else {
-                            filesSelected.remove(file);
-                            updateChart();
-                        }
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
+                    if (checkBox.isSelected()) {
+                        filesSelected.add(file);
+                        updateChart();
+                    } else {
+                        filesSelected.remove(file);
+                        updateChart();
                     }
-                };
-                checkBox.setOnAction(event1);
-            }
-
-            TilePane xaxisPane = new TilePane();
-            TilePane yaxisPane = new TilePane();
-            TilePane titlePane = new TilePane();
-            Label xaxisLabel = new Label("X axis name");
-            Label yaxisLabel = new Label("Y axis name");
-            Label titleLabel = new Label("Title name");
-            xtextField = new TextField("x");
-            ytextField = new TextField("y");
-            titletextField = new TextField("Title");
-            xaxisPane.getChildren().add(xtextField);
-            xaxisPane.getChildren().add(xaxisLabel);
-            yaxisPane.getChildren().add(ytextField);
-            yaxisPane.getChildren().add(yaxisLabel);
-            titlePane.getChildren().add(titletextField);
-            titlePane.getChildren().add(titleLabel);
-            vBox.getChildren().add(xaxisPane);
-            vBox.getChildren().add(yaxisPane);
-            vBox.getChildren().add(titlePane);
-
-            Button button = new Button("Save graph as PNG");
-            button.setOnAction(actionEvent -> savePNG());
-            vBox.getChildren().add(button);
-
-            VBox vBox2 = new VBox(2);
-            vBox2.getChildren().add(vBoxButtons);
-            vBox2.getChildren().add(vBox);
-
-            HBox hBox = new HBox(vBox2);
-            hBox.setAlignment(Pos.TOP_LEFT);
-
-            chart = new LineChart<>(new NumberAxis(), new NumberAxis());
-
-            vBoxGraph.getChildren().add(chart);
-            vBoxGraph.prefWidth(1000);
-            vBoxGraph.prefHeight(1000);
-            vBoxGraph.setAlignment(Pos.CENTER);
-            hBox.getChildren().add(vBoxGraph);
-
-            chart.setPrefHeight(1000);
-            chart.setPrefWidth(1000);
-            chart.getXAxis().setLabel(xtextField.getText());
-            chart.getYAxis().setLabel(ytextField.getText());
-            chart.setTitle(titletextField.getText());
-
-            titletextField.setOnKeyReleased(keyEvent -> chart.setTitle(titletextField.getText()));
-            xtextField.setOnKeyReleased(keyEvent -> chart.getXAxis().setLabel(xtextField.getText() + " "));
-            ytextField.setOnKeyReleased(keyEvent -> chart.getYAxis().setLabel(ytextField.getText() + " "));
-
-            scene = new Scene(hBox, 1200, 640);
-            scene.getStylesheets().add(Main.class.getResource("/Charts.css").toExternalForm());
-
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            };
+            checkBox.setOnAction(event1);
         }
-        stage.setScene(scene);
-        stage.show();
 
+        TilePane xaxisPane = new TilePane();
+        TilePane yaxisPane = new TilePane();
+        TilePane titlePane = new TilePane();
+        Label xaxisLabel = new Label("X axis name");
+        Label yaxisLabel = new Label("Y axis name");
+        Label titleLabel = new Label("Title name");
+        xtextField = new TextField("x");
+        ytextField = new TextField("y");
+        titletextField = new TextField("Title");
+        xaxisPane.getChildren().add(xtextField);
+        xaxisPane.getChildren().add(xaxisLabel);
+        yaxisPane.getChildren().add(ytextField);
+        yaxisPane.getChildren().add(yaxisLabel);
+        titlePane.getChildren().add(titletextField);
+        titlePane.getChildren().add(titleLabel);
+        vBox.getChildren().add(xaxisPane);
+        vBox.getChildren().add(yaxisPane);
+        vBox.getChildren().add(titlePane);
 
+        Button rotate = new Button("Rotate axis");
+        rotate.setOnAction(actionEvent -> chart.setRotate(chart.getRotate()+180));
+        vBox.getChildren().add(rotate);
+
+        Button button = new Button("Save graph as PNG");
+        button.setOnAction(actionEvent -> savePNG());
+        vBox.getChildren().add(button);
+
+        HBox hBox = new HBox(vBox);
+        hBox.setAlignment(Pos.TOP_LEFT);
+
+        chart = new LineChart<>(new NumberAxis(), new NumberAxis());
+
+        vBoxGraph.getChildren().add(chart);
+        vBoxGraph.prefWidth(1000);
+        vBoxGraph.prefHeight(1000);
+        vBoxGraph.setAlignment(Pos.CENTER);
+        hBox.getChildren().add(vBoxGraph);
+
+        chart.setPrefHeight(1000);
+        chart.setPrefWidth(1000);
+        chart.getXAxis().setLabel(xtextField.getText());
+        chart.getYAxis().setLabel(ytextField.getText());
+        chart.setTitle(titletextField.getText());
+
+        titletextField.setOnKeyReleased(keyEvent -> chart.setTitle(titletextField.getText()));
+        xtextField.setOnKeyReleased(keyEvent -> chart.getXAxis().setLabel(xtextField.getText() + " "));
+        ytextField.setOnKeyReleased(keyEvent -> chart.getYAxis().setLabel(ytextField.getText() + " "));
+
+        return hBox;
     }
+
 }

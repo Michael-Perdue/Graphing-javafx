@@ -32,10 +32,10 @@ public class LineChartGen extends Charts{
         super();
     }
 
-    private LineChart<Number, Number> loadchart() throws FileNotFoundException{
+    protected LineChart<Number, Number> loadchart(){
         ArrayList<XYChart.Series<Number,Number>> series = generateXYseries();
         double xstep = Math.ceil((xMaxMin[1] - xMaxMin[0]) /30) > 5 ? Math.ceil(((((xMaxMin[1] - xMaxMin[0]) / 30) + 5) /10)*10) : Math.ceil((xMaxMin[1] - xMaxMin[0]) /30);
-        NumberAxis xAxis = new NumberAxis(Math.ceil(xMaxMin[0] - xstep),Math.floor(xMaxMin[1] + xstep),xstep);
+        NumberAxis xAxis = new NumberAxis(Math.ceil(xMaxMin[0]),Math.floor(xMaxMin[1]),xstep);
         NumberAxis yAxis = new NumberAxis();
         yAxis.setAutoRanging(true);
         yAxis.setForceZeroInRange(false);
@@ -51,21 +51,9 @@ public class LineChartGen extends Charts{
     }
 
     protected void updateChart(){
-        try{
         chart = loadchart();
-        chart.getXAxis().setAnimated(false);
-        chart.getYAxis().setAnimated(false);
         vBoxGraph.getChildren().clear();
         vBoxGraph.getChildren().add(chart);
-        }catch (Exception ex){ex.printStackTrace();}
-    }
-
-    protected void savePNG(){
-        WritableImage image = chart.snapshot(null,null);
-        File imageFile = new File(System.getProperty("user.home") +"/Downloads/" + chart.getTitle() + ".png");
-        try{
-           ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", imageFile);
-        }catch (Exception e){e.printStackTrace();}
     }
 
 }

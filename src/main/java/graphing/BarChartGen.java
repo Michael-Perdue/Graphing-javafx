@@ -29,7 +29,7 @@ public class BarChartGen extends Charts{
         super();
     }
 
-    protected ArrayList<XYChart.Series<Number,Number>> generateXYseries() throws FileNotFoundException {
+    protected ArrayList<XYChart.Series<Number,Number>> generateXYseries(){
         ArrayList<XYChart.Series<Number,Number>> series = new ArrayList<>();
         try {
             for(File file : filesSelected) {
@@ -46,11 +46,11 @@ public class BarChartGen extends Charts{
                     series.add(data);
                 }
             }
-        }catch (Exception e){System.out.println("Error no files to process");throw e;}
+        }catch (Exception e){System.out.println("Error no files to process");}
         return series;
     }
 
-    private BarChart<String, Number> loadchart() throws FileNotFoundException {
+    protected BarChart<String, Number> loadchart(){
         ArrayList<XYChart.Series<Number,Number>> series = generateXYseries();
         CategoryAxis xAxis = new CategoryAxis();
         NumberAxis yAxis = new NumberAxis();
@@ -71,14 +71,6 @@ public class BarChartGen extends Charts{
             vBoxGraph.getChildren().clear();
             vBoxGraph.getChildren().add(chart);
         }catch (Exception ex){ex.printStackTrace();}
-    }
-
-    protected void savePNG(){
-        WritableImage image = chart.snapshot(null,null);
-        File imageFile = new File(System.getProperty("user.home") +"/Downloads/" + chart.getTitle() + ".png");
-        try{
-            ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", imageFile);
-        }catch (Exception e){e.printStackTrace();}
     }
 
 }

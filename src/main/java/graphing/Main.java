@@ -1,31 +1,26 @@
 package graphing;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Pos;
-import javafx.geometry.Side;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 
 public class Main extends Application {
     @Override
-    public void start(Stage stage) throws IOException {
-        Tab lineTab = new Tab("Generate Line Chart",LineChartGen.getInstance().chartConfig(stage));
+    public void start(Stage stage){
+        Tab lineTab = new Tab("Generate Line Chart",LineChartGen.getInstance().chartConfig());
         lineTab.setClosable(false);
-        Tab barTab = new Tab("Generate Bar Chart",BarChartGen.getInstance().chartConfig(stage));
+        Tab barTab = new Tab("Generate Bar Chart",BarChartGen.getInstance().chartConfig());
         barTab.setClosable(false);
-        Tab scatterTab = new Tab("Generate Scatter Chart",ScatterChartGen.getInstance().chartConfig(stage));
+        Tab scatterTab = new Tab("Generate Scatter Chart",ScatterChartGen.getInstance().chartConfig());
         scatterTab.setClosable(false);
-        TabPane tabPane = new TabPane(lineTab,barTab,scatterTab);
+        Tab areaTab = new Tab("Generate Area Chart",AreaChartGen.getInstance().chartConfig());
+        areaTab.setClosable(false);
+        Tab stackedAreaTab = new Tab("Generate Stacked Area Chart",StackedAreaChartGen.getInstance().chartConfig());
+        stackedAreaTab.setClosable(false);
+        TabPane tabPane = new TabPane(lineTab,barTab,scatterTab,areaTab,stackedAreaTab);
         Scene scene = new Scene(tabPane, 1200, 640);
         scene.getStylesheets().add(Main.class.getResource("/Charts.css").toExternalForm());
         stage.setScene(scene);

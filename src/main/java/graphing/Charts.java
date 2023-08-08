@@ -1,5 +1,6 @@
 package graphing;
 
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -9,15 +10,18 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
+import java.text.DecimalFormat;
+import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -33,12 +37,10 @@ public abstract class Charts {
     protected ArrayList<File> filesSelected = new ArrayList<File>();
     protected XYChart chart;
 
-    protected Scene scene;
-
     protected void addTooltip(ArrayList<XYChart.Series<Number,Number>> series,boolean resize){
         for(XYChart.Series<Number,Number> dataSeries: series) {
             for (XYChart.Data<Number,Number> data :dataSeries.getData()) {
-                Tooltip tooltip = new Tooltip(data.getYValue().toString());
+                Tooltip tooltip = new Tooltip(new DecimalFormat("#,###.###").format(data.getYValue()) + " " + ytextField.getText());
                 Tooltip.install(data.getNode(), tooltip);
                 tooltip.setShowDelay(Duration.millis(100));
                 data.getNode().setOnMouseEntered(eventH -> data.getNode().getStyleClass().add("onHover"));
@@ -52,7 +54,7 @@ public abstract class Charts {
         }
     }
 
-    protected ArrayList<XYChart.Series<Number,Number>> generateXYseries() throws FileNotFoundException {
+    protected ArrayList<XYChart.Series<Number,Number>> generateXYseries() {
         ArrayList<XYChart.Series<Number,Number>> series = new ArrayList<>();
         try {
             for(File file : filesSelected) {
@@ -77,15 +79,28 @@ public abstract class Charts {
                     series.add(data);
                 }
             }
-        }catch (Exception e){System.out.println("Error no files to process");throw e;}
+        }catch (Exception e){System.out.println("Error no files to process");}
         return series;
     }
 
-    protected abstract void updateChart();
+    protected void updateChart(){
+        chart = loadchart();
+        vBoxGraph.getChildren().clear();
+        vBoxGraph.getChildren().add(chart);
+    }
 
-    protected abstract void savePNG();
+    protected abstract XYChart loadchart();
 
-    protected HBox chartConfig(Stage stage) {
+
+    protected void savePNG(){
+        WritableImage image = chart.snapshot(null,null);
+        File imageFile = new File(System.getProperty("user.home") +"/Downloads/" + chart.getTitle() + ".png");
+        try{
+            ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", imageFile);
+        }catch (Exception e){e.printStackTrace();}
+    }
+
+    protected HBox chartConfig() {
 
         File[] files = new File("src/main/resources/data").listFiles();
 
@@ -136,9 +151,6 @@ public abstract class Charts {
         vBox.getChildren().add(yaxisPane);
         vBox.getChildren().add(titlePane);
 
-        Button rotate = new Button("Rotate axis");
-        rotate.setOnAction(actionEvent -> chart.setRotate(chart.getRotate()+180));
-        vBox.getChildren().add(rotate);
 
         Button button = new Button("Save graph as PNG");
         button.setOnAction(actionEvent -> savePNG());
@@ -167,5 +179,7 @@ public abstract class Charts {
 
         return hBox;
     }
+
+
 
 }

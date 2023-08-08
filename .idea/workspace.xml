@@ -5,9 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d92614a0-e812-4567-8369-ecf6e925b67f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/graphing/AreaChartGen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/graphing/StackedAreaChartGen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/Pop_Africa.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/Pop_Asia.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/Pop_Europe.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/Pop_NorthAmerica.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/Pop_Oceania.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/Pop_SouthAmerica.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/yen.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/graphing/BarChartGen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphing/BarChartGen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/graphing/Charts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphing/Charts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/graphing/LineChartGen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphing/LineChartGen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/graphing/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphing/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/graphing/ScatterChartGen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphing/ScatterChartGen.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +29,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="CSS File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -34,32 +46,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;database.data.extractors.current.export.id&quot;: &quot;Comma-separated (CSV)_id&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/tmas4/IdeaProjects/Graphing_JavaFX/src/main/resources/years&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "database.data.extractors.current.export.id": "Comma-separated (CSV)_id",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/tmas4/IdeaProjects/Graphing_JavaFX/src/main/resources/data",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\tmas4\IdeaProjects\Graphing_JavaFX\src\main\resources\data" />
       <recent name="C:\Users\tmas4\IdeaProjects\Graphing_JavaFX\src\main\resources\years" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\tmas4\IdeaProjects\Graphing_JavaFX\src\main\resources\data" />
       <recent name="C:\Users\tmas4\IdeaProjects\Graphing_JavaFX\src\main\resources\years" />
       <recent name="C:\Users\tmas4\IdeaProjects\Graphing_JavaFX\src\main\resources" />
       <recent name="C:\Users\tmas4\IdeaProjects\Graphing_JavaFX\src\main\data" />
@@ -81,7 +95,8 @@
       <workItem from="1691178935547" duration="24125000" />
       <workItem from="1691280405349" duration="18909000" />
       <workItem from="1691301996665" duration="3043000" />
-      <workItem from="1691379141916" duration="7788000" />
+      <workItem from="1691379141916" duration="8604000" />
+      <workItem from="1691475007089" duration="6761000" />
     </task>
     <servers />
   </component>

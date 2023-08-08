@@ -31,12 +31,4 @@ public class BarChartGen extends BarChartGens{
         return barChart;
     }
 
-    protected void updateChart(){
-        try{
-            chart = loadchart();
-            vBoxGraph.getChildren().clear();
-            vBoxGraph.getChildren().add(chart);
-        }catch (Exception ex){ex.printStackTrace();}
-    }
-
 }

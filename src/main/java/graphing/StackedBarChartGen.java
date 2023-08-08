@@ -31,11 +31,4 @@ public class StackedBarChartGen extends BarChartGens{
         return stackedBarChart;
     }
 
-    protected void updateChart(){
-        try{
-            chart = loadchart();
-            vBoxGraph.getChildren().clear();
-            vBoxGraph.getChildren().add(chart);
-        }catch (Exception ex){ex.printStackTrace();}
-    }
 }

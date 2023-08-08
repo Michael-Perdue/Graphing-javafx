@@ -37,10 +37,4 @@ public class LineChartGen extends Charts{
         return lineChart;
     }
 
-    protected void updateChart(){
-        chart = loadchart();
-        vBoxGraph.getChildren().clear();
-        vBoxGraph.getChildren().add(chart);
-    }
-
 }

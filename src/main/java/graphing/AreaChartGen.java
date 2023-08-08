@@ -2,7 +2,6 @@ package graphing;
 
 import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.ScatterChart;
 import javafx.scene.chart.XYChart;
 
 import java.util.ArrayList;

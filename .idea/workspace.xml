@@ -5,21 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d92614a0-e812-4567-8369-ecf6e925b67f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/graphing/AreaChartGen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/graphing/StackedAreaChartGen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/Pop_Africa.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/Pop_Asia.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/Pop_Europe.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/Pop_NorthAmerica.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/Pop_Oceania.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/Pop_SouthAmerica.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/yen.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/graphing/BarChartGens.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/graphing/StackedBarChartGen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/graphing/AreaChartGen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphing/AreaChartGen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/graphing/BarChartGen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphing/BarChartGen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/graphing/Charts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphing/Charts.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/graphing/LineChartGen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphing/LineChartGen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/graphing/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphing/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/graphing/ScatterChartGen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphing/ScatterChartGen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/graphing/StackedAreaChartGen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphing/StackedAreaChartGen.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +91,7 @@
       <workItem from="1691280405349" duration="18909000" />
       <workItem from="1691301996665" duration="3043000" />
       <workItem from="1691379141916" duration="8604000" />
-      <workItem from="1691475007089" duration="6761000" />
+      <workItem from="1691475007089" duration="8723000" />
     </task>
     <servers />
   </component>

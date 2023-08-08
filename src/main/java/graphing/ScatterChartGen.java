@@ -1,7 +1,6 @@
 package graphing;
 
 import javafx.scene.chart.*;
-
 import java.util.ArrayList;
 
 public class ScatterChartGen extends Charts{

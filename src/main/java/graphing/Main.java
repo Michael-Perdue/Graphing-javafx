@@ -6,7 +6,6 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.stage.Stage;
 
-
 public class Main extends Application {
     @Override
     public void start(Stage stage){
@@ -20,7 +19,9 @@ public class Main extends Application {
         areaTab.setClosable(false);
         Tab stackedAreaTab = new Tab("Generate Stacked Area Chart",StackedAreaChartGen.getInstance().chartConfig());
         stackedAreaTab.setClosable(false);
-        TabPane tabPane = new TabPane(lineTab,barTab,scatterTab,areaTab,stackedAreaTab);
+        Tab stackedBarTab = new Tab("Generate Stacked Bar Chart",StackedBarChartGen.getInstance().chartConfig());
+        stackedBarTab.setClosable(false);
+        TabPane tabPane = new TabPane(lineTab,barTab,stackedBarTab,scatterTab,areaTab,stackedAreaTab);
         Scene scene = new Scene(tabPane, 1200, 640);
         scene.getStylesheets().add(Main.class.getResource("/Charts.css").toExternalForm());
         stage.setScene(scene);

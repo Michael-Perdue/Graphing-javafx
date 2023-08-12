@@ -5,18 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d92614a0-e812-4567-8369-ecf6e925b67f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data/BadFormat.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ReadME.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/graphing/AreaChartGen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphing/AreaChartGen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/graphing/BarChartGen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphing/BarChartGen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/graphing/BarChartGens.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphing/BarChartGens.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/graphing/Charts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphing/Charts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/graphing/LineChartGen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphing/LineChartGen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/graphing/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphing/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/graphing/ScatterChartGen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphing/ScatterChartGen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/graphing/StackedAreaChartGen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphing/StackedAreaChartGen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/graphing/StackedBarChartGen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/graphing/StackedBarChartGen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Charts.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Main.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +23,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -58,6 +51,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -93,7 +87,11 @@
       <workItem from="1691280405349" duration="18909000" />
       <workItem from="1691301996665" duration="3043000" />
       <workItem from="1691379141916" duration="8604000" />
-      <workItem from="1691475007089" duration="19585000" />
+      <workItem from="1691475007089" duration="20195000" />
+      <workItem from="1691678659738" duration="1544000" />
+      <workItem from="1691752878321" duration="1431000" />
+      <workItem from="1691768560937" duration="648000" />
+      <workItem from="1691842153284" duration="188000" />
     </task>
     <servers />
   </component>

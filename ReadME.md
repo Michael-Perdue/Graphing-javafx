@@ -2,10 +2,6 @@
 
 This project was made to help get me familiar with JavaFX by using its XYCharts. It gets the names of all CSV files in the data folder of the project and lets you select which ones you want to use for the data of a graph. There are 6 different types of graphs - line chart, bar chart, stacked bar chart, scatter chart, area chart and stacked area chart. Each of these graphs has its own tab and remembers your graph/settings when you click onto another tab so you don't have to worry about remaking a graph if you quickly switch graphs. For each of these graphs, you can select the CSV files you want to the x and y-axis names and the title of the graph. Each data point has a tooltip which means you can hover over the data point to see its value. Finally, you can save all of the graphs to PNG's and it will save the graph with the name of the title to your downloads folder. For a more in-depth breakdown of the system, you can look at the sections below.
 
-Below is a gif of the whole system working:
-
-![](https://michael-perdue.github.io/assets/graphing-demo.gif)
-
 # System Features
 
 ## System structure
